@@ -33,7 +33,7 @@ class Product
 
     public function get_image()
     {
-        return $this - image;
+        return $this->image;
     }
 
 }
