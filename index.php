@@ -41,12 +41,13 @@
 
       <?php
           require_once "products_data.php";
+          session_start();
 
       ?>
           <?php
               foreach ($products as $product):
           ?>
-          <div style=" display:flex; justify-content:center; align-items: center;">
+        <div style=" display:flex; justify-content:center; align-items: center;">
           <div style="border: 1px solid gray; padding: 50px; margin: 10px;">
             <h3>
               <?php echo $product->get_title(); ?>
@@ -68,11 +69,11 @@
               <input type="submit" value="Add to Cart" />
             </form>
           </div>
-              </div>
+        </div>
 
-<?php
-    endforeach;
-?>
+            <?php
+                endforeach;
+            ?>
 
           ?>
 
