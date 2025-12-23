@@ -38,12 +38,16 @@ else: ?>
 			                    <?php echo $product->get_title(); ?> -
 			                    Quantity:<?php echo $quantity; ?> -
 			                    Subtotal: $<?php echo $subtotal; ?> =
-		                        <a href="remove_from_cart.php?product_id=<?php echo $product_id; ?>">Remove</a>
+			                    <a href="remove_from_cart.php?product_id=<?php echo $product_id; ?>">Remove</a>
 			                </li>
 			                <?php
                                 endforeach;
                             ?>
+    <h3>Total Price: $<?php echo $total; ?></h3>
     </ul>
+
+
+    <h3><a href="checkout.php">Proceed To Checkout</a></h3>
 
 <?php
     endif;
