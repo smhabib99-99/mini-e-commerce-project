@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once "classes/Cart.php";
 if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];

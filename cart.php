@@ -1,6 +1,8 @@
 <?php
 
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     require_once "classes/Cart.php";
     require_once "products_data.php";
     $cart  = new Cart();
@@ -34,15 +36,15 @@ else: ?>
                 $subtotal = $product->get_price() * $quantity;
                 $total += $subtotal;
             ?>
-			                <li>
-			                    <?php echo $product->get_title(); ?> -
-			                    Quantity:<?php echo $quantity; ?> -
-			                    Subtotal: $<?php echo $subtotal; ?> =
-			                    <a href="remove_from_cart.php?product_id=<?php echo $product_id; ?>">Remove</a>
-			                </li>
-			                <?php
-                                endforeach;
-                            ?>
+	                <li>
+	                    <?php echo $product->get_title(); ?> -
+	                    Quantity:<?php echo $quantity; ?> -
+	                    Subtotal: $<?php echo $subtotal; ?> =
+	                    <a href="remove_from_cart.php?product_id=<?php echo $product_id; ?>">Remove</a>
+	                </li>
+	                <?php
+                        endforeach;
+                    ?>
     <h3>Total Price: $<?php echo $total; ?></h3>
     </ul>
 

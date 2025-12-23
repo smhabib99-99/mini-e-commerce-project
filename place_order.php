@@ -1,7 +1,10 @@
 <?php
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     require_once "classes/Cart.php";
     require_once "products_data.php";
+    require_once "classes/Order.php";
 
     if (! isset($_POST['paymentMethod'])) {
         echo "<p>No payment method selected. <a href='checkout.php'>Go back to Checkout</a></p>";
@@ -39,7 +42,7 @@
 
 ?><h2>Order Confirmation</h2>
 <p>Thank you for your order!</p>
-<p>Order ID:                                     <?php echo $order->get_order_id(); ?></p>
+<p>Order ID:                                                                         <?php echo $order->get_order_id(); ?></p>
 <p>Order Date:<?php echo $order->get_order_date(); ?></p>
 <p>Total Price: $<?php echo $order->get_total_price(); ?></p>
 <p>Payment Method:<?php echo htmlspecialchars($paymentMethod); ?></p>
@@ -60,7 +63,7 @@
 </ul>
 <?php
     // Clear the cart after placing the order
-    $cart->clear();
+    // $cart->clear();
 ?>
 <p><a href="index.php">Continue Shopping</a></p>
 

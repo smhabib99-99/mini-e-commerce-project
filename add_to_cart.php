@@ -1,6 +1,8 @@
 <?php
 
-session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 require_once "classes/Cart.php";
 // $cart = new Cart();
 if (isset($_POST['product_id'])) {

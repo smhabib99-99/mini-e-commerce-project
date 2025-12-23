@@ -1,11 +1,14 @@
 <?php
 
-    session_start();
     require_once "classes/Order.php";
+    require_once "classes/Product.php";
     require_once "products_data.php";
-    require_once "place_order.php";
 
-    $order = new Order();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    // $order = new Order();
 
     if (! isset($_SESSION['last_order'])) {
         echo "<p>No order ID provided. <a href='index.php'>Go back to Home</a></p>";
@@ -27,7 +30,7 @@
 <h3>Items Ordered:</h3>
 <ul>
     <?php
-        require_once "products_data.php";
+        // require_once "products_data.php";
         foreach ($order->get_items() as $product_id => $quantity) {
             if (isset($products[$product_id])) {
                 $product = $products[$product_id];
